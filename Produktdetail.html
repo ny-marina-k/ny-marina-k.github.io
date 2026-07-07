@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produkte — Fruchtzauber Smoothies</title>
+<meta name="description" content="Alle Fruchtzauber-Smoothies im Überblick: nach Kategorie filtern und direkt zur Detailseite mit Bestellformular.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* CSS-only Filter: Radios sind visuell versteckt, Labels wirken als Chips */
+  .filter-radio {
+    position: absolute;
+    width: 1px; height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .filter-radio:checked + .filter-chip {
+    background: var(--color-plum);
+    border-color: var(--color-plum);
+    color: #fff;
+  }
+  .filter-radio:focus-visible + .filter-chip {
+    outline: 3px solid var(--color-mango);
+    outline-offset: 2px;
+  }
+  /* Sichtbarkeitslogik pro Filter */
+  #f-beeren:checked ~ .product-grid .product-card:not([data-cat="beeren"]),
+  #f-tropisch:checked ~ .product-grid .product-card:not([data-cat="tropisch"]),
+  #f-gruen:checked ~ .product-grid .product-card:not([data-cat="gruen"]),
+  #f-klassiker:checked ~ .product-grid .product-card:not([data-cat="klassiker"]) {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10 12h14l-1.5 15a3 3 0 0 1-3 2.7h-5a3 3 0 0 1-3-2.7L10 12z" fill="#FF9F1C"/>
+        <path d="M10 12h14v3H10z" fill="#5C1F3D"/>
+        <rect x="15.5" y="3" width="3" height="9" rx="1.5" fill="#8BC53F" transform="rotate(20 17 7)"/>
+      </svg>
+      Fruchtzauber
+    </a>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links" onclick="const n=document.getElementById('nav-links'); const open=n.classList.toggle('is-open'); this.setAttribute('aria-expanded', open);">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="produkte.html" aria-current="page">Produkte</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="container page-header">
+    <span class="eyebrow">Sortiment</span>
+    <h1>Alle Smoothies</h1>
+    <p class="lede">Filtere nach Kategorie oder stöbere durch das ganze Sortiment — jede Sorte führt zu einer Detailseite mit Beschreibung, Bild, Video und Bestellformular.</p>
+  </div>
+
+  <div class="container section--tight" style="padding-top:0;">
+
+    <!-- Versteckte Radios für den CSS-only Filter -->
+    <input type="radio" name="filter" id="f-alle" class="filter-radio" checked>
+    <input type="radio" name="filter" id="f-beeren" class="filter-radio">
+    <input type="radio" name="filter" id="f-tropisch" class="filter-radio">
+    <input type="radio" name="filter" id="f-gruen" class="filter-radio">
+    <input type="radio" name="filter" id="f-klassiker" class="filter-radio">
+
+    <div class="filter-bar" role="radiogroup" aria-label="Nach Kategorie filtern">
+      <label for="f-alle" class="filter-chip">Alle</label>
+      <label for="f-beeren" class="filter-chip">Beeren</label>
+      <label for="f-tropisch" class="filter-chip">Tropisch</label>
+      <label for="f-gruen" class="filter-chip">Grün &amp; Detox</label>
+      <label for="f-klassiker" class="filter-chip">Klassiker</label>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- BEEREN -->
+      <article class="product-card" data-cat="beeren" id="beeren">
+         <img src="Adobe Express - file (1).png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Beeren</span>
+          <h3>Beeren Traum</h3>
+          <p class="product-desc">Blaubeere, Himbeere und Erdbeere, cremig gemixt.</p>
+          <div class="product-footer"><span class="price">CHF 6.50</span><a href="produktdetail-beerentraum.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <article class="product-card" data-cat="beeren">
+        <img src="Screenshot 2026-07-04 175402.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Beeren</span>
+          <h3>Himbeer Vanille</h3>
+          <p class="product-desc">Himbeere trifft auf sanfte Bourbon-Vanille.</p>
+          <div class="product-footer"><span class="price">CHF 6.70</span><a href="produktdetail-himbeervanille.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <article class="product-card" data-cat="beeren">
+        <img src="Screenshot 2026-07-04 175245.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Beeren</span>
+          <h3>Blaubeer Bliss</h3>
+          <p class="product-desc">Blaubeere und Banane für extra Cremigkeit.</p>
+          <div class="product-footer"><span class="price">CHF 6.50</span><a href="produktdetail-blaubeerbliss.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <article class="product-card" data-cat="beeren">
+         <img src="Unbenannt - July 04, 2026 at 17.59.11.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Beeren</span>
+          <h3>Erdbeer Basilikum</h3>
+          <p class="product-desc">Fruchtig-frisch mit einer würzigen Basilikumnote.</p>
+          <div class="product-footer"><span class="price">CHF 6.90</span><a href="produktdetail-erdbeerbasilikum.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <!-- TROPISCH -->
+      <article class="product-card" data-cat="tropisch" id="tropisch">
+         <img src="Screenshot 2026-07-04 175533.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Tropisch</span>
+          <h3>Mango Sunrise</h3>
+          <p class="product-desc">Mango, Passionsfrucht und Orange — sonnig und süß.</p>
+          <div class="product-footer"><span class="price">CHF 6.90</span><a href="produktdetail-mangosunrise.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <article class="product-card" data-cat="tropisch">
+         <img src="Screenshot 2026-07-04 180544.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Tropisch</span>
+          <h3>Tropical Paradise</h3>
+          <p class="product-desc">Ananas, Mango und ein Hauch Kokosmilch.</p>
+          <div class="product-footer"><span class="price">CHF 7.20</span><a href="produktdetail-tropicalparadise.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <article class="product-card" data-cat="tropisch">
+        <img src="Screenshot 2026-07-04 180955.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Tropisch</span>
+          <h3>Ananas Ingwer</h3>
+          <p class="product-desc">Erfrischend scharf durch frischen Ingwer.</p>
+          <div class="product-footer"><span class="price">CHF 6.90</span><a href="produktdetail-ananasingwer.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <article class="product-card" data-cat="tropisch">
+         <img src="Unbenannt - July 04, 2026 at 18.21.42.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Tropisch</span>
+          <h3>Papaya Sonne</h3>
+          <p class="product-desc">Papaya, Orange und eine Prise Limette.</p>
+          <div class="product-footer"><span class="price">CHF 6.70</span><a href="produktdetail-papayasonne.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <!-- GRÜN & DETOX -->
+      <article class="product-card" data-cat="gruen" id="gruen">
+         <img src="Screenshot 2026-07-04 183359.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Grün &amp; Detox</span>
+          <h3>Grüner Detox</h3>
+          <p class="product-desc">Spinat, Apfel, Kiwi und ein Hauch Ingwer.</p>
+          <div class="product-footer"><span class="price">CHF 6.90</span><a href="produktdetail-gruenerdetox.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <article class="product-card" data-cat="gruen">
+        <img src="Unbenannt - July 04, 2026 at 18.40.11 (2).png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Grün &amp; Detox</span>
+          <h3>Gurken-Minze Frische</h3>
+          <p class="product-desc">Gurke, Apfel und frische Minze — sehr leicht.</p>
+          <div class="product-footer"><span class="price">CHF 6.50</span><a href="produktdetail-gurkenminzefrische.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <article class="product-card" data-cat="gruen">
+        <img src="Unbenannt - July 04, 2026 at 18.47.36.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Grün &amp; Detox</span>
+          <h3>Kiwi Kick</h3>
+          <p class="product-desc">Kiwi, Apfel und Limette für den Energieschub.</p>
+          <div class="product-footer"><span class="price">CHF 6.70</span><a href="produktdetail-kiwikick.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <!-- KLASSIKER -->
+      <article class="product-card" data-cat="klassiker" id="klassiker">
+        <img src="Unbenannt - July 04, 2026 at 19.04.33.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Klassiker</span>
+          <h3>Pfirsich Melone</h3>
+          <p class="product-desc">Pfirsich und Honigmelone, mild und süß.</p>
+          <div class="product-footer"><span class="price">CHF 6.50</span><a href="produktdetail-pfirsichmelone.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <article class="product-card" data-cat="klassiker">
+       <img src="Unbenannt - July 04, 2026 at 19.07.16.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Klassiker</span>
+          <h3>Apfel-Zimt</h3>
+          <p class="product-desc">Warme Zimtnote trifft auf frischen Apfel.</p>
+          <div class="product-footer"><span class="price">CHF 6.30</span><a href="produktdetail-apfelzimt.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+      <article class="product-card" data-cat="klassiker">
+       <img src="Screenshot 2026-07-04 185754.png" alt="Blaubeer Bliss Smoothie im Glas">
+        <div class="product-body">
+          <span class="product-cat">Klassiker</span>
+          <h3>Aprikosen Traum</h3>
+          <p class="product-desc">Aprikose und Banane, samtig und mild.</p>
+          <div class="product-footer"><span class="price">CHF 6.50</span><a href="produktdetail-aprikosentraum.html" class="btn btn-primary btn-sm">Ansehen</a></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Fruchtzauber</h4>
+        <p>Handgemixte Frucht-Smoothies aus dem Herzen der Stadt.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produkte.html">Produkte</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+           <li><a href="mailto:hallo@fruchtzauber.ch">marinamihakon@gmail.com</a></li>
+          <li><a href="tel:+41440000000">+41782256001</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
